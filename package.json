@@ -1,0 +1,12 @@
+{
+  "name": "paul-jacksen-portfolio",
+  "version": "1.0.0",
+  "description": "Bento Grid Portfolio for Paul Jacksen B — AI/ML Engineer",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx serve ."
+  },
+  "keywords": ["bento", "portfolio", "ai-ml-engineer", "mcp", "llm"],
+  "author": "Paul Jacksen B",
+  "license": "MIT"
+}
