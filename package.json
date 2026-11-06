@@ -6,7 +6,13 @@
     "start": "npx serve .",
     "dev": "npx serve ."
   },
-  "keywords": ["portfolio", "ai-ml-engineer", "mcp", "llm"],
+  "keywords": [
+    "portfolio",
+    "ai-ml-engineer",
+    "mcp",
+    "llm"
+  ],
   "author": "Paul Jacksen B",
-  "license": "MIT"
+  "license": "MIT",
+  "type": "module"
 }

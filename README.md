@@ -8,7 +8,7 @@ A modern, high-performance personal portfolio custom-tailored for **Paul Jacksen
 
 1. **Featured Architecture & Modular Showcase:**
    - **Spotlight Role Card:** Highlights your work at **Neeyamo** on **Aria** (Enterprise AI Chatbot, Model Context Protocol servers in Java, Amazon Bedrock, Spring Boot, Angular).
-   - **Interactive MCP Console Simulator:** Recruiters and engineers can click live tool buttons (`list_tools()`, `invoke("manage_leave")`, `rag.ask()`, `bedrock.query()`) to see simulated JSON-RPC MCP calls and foundation model outputs in real time.
+   - **Floating AI Assistant:** A chat bubble (bottom-right) answers recruiter questions about Paul using Llama on Groq, with buttons that open project details or jump to sections. Falls back to built-in answers if the API is unavailable.
    - **Featured Projects:**
      - 🏆 **Smart Navigation System:** Indoor railway guidance with YOLO & A* pathfinding (Selected Top 20 of 100+ & awarded ₹18,000 CSRC funding).
      - 🤟 **AI-DIDI (Sign Language Translator):** 90%+ comprehension accuracy tested with 30+ deaf students, using spaCy, Blender, Unreal Engine, and Move AI.
@@ -58,3 +58,15 @@ Then visit `http://localhost:3000`.
 
 ### Vercel:
 * Import your GitHub repository directly into the [Vercel Dashboard](https://vercel.com) for instant deployment with SSL and custom domain support.
+
+---
+
+## 🤖 AI Assistant setup (Groq key on Vercel)
+
+The chat calls `/api/chat`, a Vercel serverless function. The Groq key stays on the server and is **never** sent to the browser.
+
+1. Get a key at https://console.groq.com/keys
+2. Vercel → your project → **Settings → Environment Variables** → add `GROQ_API_KEY` (Production + Preview). Optional: `GROQ_MODEL` (default `llama-3.1-8b-instant`).
+3. **Redeploy** so the function picks up the variable.
+
+Do not commit `.env` — it is in `.gitignore`. Use `.env.example` as the template. For local testing with the real API, run `npx vercel dev` (plain `npx serve .` uses the built-in fallback answers).

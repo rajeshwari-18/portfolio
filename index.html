@@ -159,17 +159,17 @@
           </p>
 
           <!-- Metadata & Location -->
-          <div class="flex flex-wrap items-center gap-4 text-xs font-mono text-neutral-400 pt-1">
+          <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-mono text-neutral-400 pt-1">
             <span class="flex items-center gap-1.5">
               <svg class="w-3.5 h-3.5 text-neutral-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
               Madurai, India
             </span>
-            <span>•</span>
+            <span class="hidden sm:inline">•</span>
             <span class="flex items-center gap-1.5">
               <svg class="w-3.5 h-3.5 text-neutral-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               <span id="local-time">IST (UTC+5:30)</span>
             </span>
-            <span>•</span>
+            <span class="hidden sm:inline">•</span>
             <span class="text-teal-400/90 font-medium">B.E. CSE (Honours) @ Anna University</span>
           </div>
         </div>
@@ -202,7 +202,7 @@
     <div id="projects" class="scroll-mt-28"></div>
     <div id="showcase" class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2">
       <div class="space-y-1">
-        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-white flex items-center gap-2">
+        <h2 class="text-lg sm:text-2xl font-bold tracking-tight text-white flex items-center gap-2">
           <span class="w-2.5 h-2.5 rounded-full bg-teal-400"></span>
           Featured Projects &amp; Systems Showcase
         </h2>
@@ -210,7 +210,7 @@
       </div>
 
       <!-- Filter Tabs -->
-      <div class="flex overflow-x-auto no-scrollbar items-center gap-1 p-1 bg-neutral-900 border border-neutral-800 rounded-xl text-xs font-mono w-fit">
+      <div class="flex overflow-x-auto no-scrollbar items-center gap-1 p-1 bg-neutral-900 border border-neutral-800 rounded-xl text-xs font-mono w-full sm:w-fit max-w-full">
         <button onclick="filterCategory('all')" class="filter-btn active whitespace-nowrap px-3 py-1 rounded-lg text-neutral-300 hover:text-white transition" data-filter="all">All</button>
         <button onclick="filterCategory('ai')" class="filter-btn whitespace-nowrap px-3 py-1 rounded-lg text-neutral-400 hover:text-white transition" data-filter="ai">AI / GenAI</button>
         <button onclick="filterCategory('projects')" class="filter-btn whitespace-nowrap px-3 py-1 rounded-lg text-neutral-400 hover:text-white transition" data-filter="projects">Projects</button>
@@ -219,14 +219,14 @@
     </div>
 
     <!-- ==================== FEATURED SHOWCASE ==================== -->
-    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
       <!-- CARD 1: CURRENT ROLE SPOTLIGHT (Large 2 Cols) -->
-      <div class="card-item group md:col-span-2 lg:col-span-2 rounded-2xl bg-gradient-to-b from-neutral-900/90 to-neutral-950/90 border border-neutral-800/80 p-6 flex flex-col justify-between relative overflow-hidden transition-all duration-300 hover:border-teal-500/40 hover:shadow-card-hover" data-category="exp ai">
+      <div class="card-item group md:col-span-2 rounded-2xl bg-gradient-to-b from-neutral-900/90 to-neutral-950/90 border border-neutral-800/80 p-5 sm:p-6 flex flex-col justify-between relative overflow-hidden transition-all duration-300 hover:border-teal-500/40 hover:shadow-card-hover" data-category="exp ai">
         <div class="absolute -right-10 -bottom-10 w-44 h-44 bg-teal-500/10 rounded-full blur-3xl pointer-events-none group-hover:bg-teal-500/20 transition-all"></div>
         
         <div>
-          <div class="flex items-center justify-between mb-4">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
             <span class="px-2.5 py-1 rounded-md text-[11px] font-mono font-medium tracking-wide bg-teal-500/10 text-teal-300 border border-teal-500/20">
               CURRENT ROLE • MAY 2026 – PRESENT
             </span>
@@ -245,7 +245,7 @@
           </p>
 
           <!-- Core Highlights -->
-          <div class="grid grid-cols-2 gap-2 text-xs font-mono text-neutral-300 mt-2">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono text-neutral-300 mt-2">
             <div class="flex items-center gap-2 p-2 rounded-lg bg-neutral-900/60 border border-neutral-800/60">
               <span class="text-teal-400">⚡</span> MCP Tool Servers (Java)
             </div>
@@ -261,7 +261,7 @@
           </div>
         </div>
 
-        <div class="mt-5 pt-4 border-t border-neutral-800/80 flex items-center justify-between">
+        <div class="mt-5 pt-4 border-t border-neutral-800/80 flex flex-wrap items-center justify-between gap-3">
           <div class="flex flex-wrap gap-1.5">
             <span class="tech-tag">Java</span>
             <span class="tech-tag">Spring Boot</span>
@@ -275,79 +275,10 @@
         </div>
       </div>
 
-      <!-- CARD 2: INTERACTIVE AI PORTFOLIO CHATBOT (2 Cols) -->
-      <div class="card-item md:col-span-1 lg:col-span-2 rounded-2xl bg-neutral-950 border border-neutral-800/80 p-5 flex flex-col justify-between relative overflow-hidden transition-all duration-300 hover:border-teal-500/40" data-category="ai">
-        <div class="flex flex-col h-full">
-          <!-- Chatbot Header -->
-          <div class="flex items-center justify-between pb-3 mb-2.5 border-b border-neutral-800">
-            <div class="flex items-center gap-2">
-              <div class="w-6 h-6 rounded-lg bg-teal-500/15 border border-teal-500/30 flex items-center justify-center text-xs">
-                🤖
-              </div>
-              <div class="flex items-center gap-2">
-                <h4 class="text-xs font-bold text-white tracking-wide">Paul's AI Assistant</h4>
-                <span class="inline-flex items-center gap-1 text-[10px] font-mono text-teal-400 bg-teal-500/10 border border-teal-500/20 px-1.5 py-0.5 rounded">
-                  <span class="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse"></span>
-                  Llama 3.1 &bull; Groq
-                </span>
-              </div>
-            </div>
-
-            <button onclick="resetChat()" title="Reset Chat Conversation" class="p-1 rounded-md text-neutral-400 hover:text-white hover:bg-neutral-900 transition text-[11px] font-mono flex items-center gap-1">
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-              <span>Reset</span>
-            </button>
-          </div>
-
-          <!-- Chat Message Feed -->
-          <div id="chat-messages" class="flex-1 overflow-y-auto space-y-2.5 pr-1 text-xs font-sans h-44 max-h-48 mb-3">
-            <!-- Assistant Greeting -->
-            <div class="flex items-start gap-2">
-              <div class="w-5 h-5 rounded-md bg-teal-500/20 text-teal-300 flex items-center justify-center text-[10px] shrink-0 mt-0.5 font-mono">
-                AI
-              </div>
-              <div class="p-2.5 rounded-2xl rounded-tl-sm bg-neutral-900/90 border border-neutral-800 text-neutral-300 leading-relaxed max-w-[90%]">
-                Hi there! 👋 I am Paul's AI Assistant. Ask me anything about Paul's experience at <span class="text-white font-medium">Neeyamo</span>, his <span class="text-teal-300">MCP servers</span>, projects, or technical skills!
-              </div>
-            </div>
-          </div>
-
-          <!-- Quick Suggestion Prompts -->
-          <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1.5 mb-2">
-            <button onclick="sendQuickPrompt('What are Paul\\'s top AI & ML skills?')" class="whitespace-nowrap text-[10px] font-mono px-2.5 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-teal-300 hover:border-teal-500/30 transition">
-              ⚡ Top Skills
-            </button>
-            <button onclick="sendQuickPrompt('Tell me about his work on Aria chatbot and MCP at Neeyamo')" class="whitespace-nowrap text-[10px] font-mono px-2.5 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-teal-300 hover:border-teal-500/30 transition">
-              🤖 Neeyamo &amp; MCP
-            </button>
-            <button onclick="sendQuickPrompt('Explain the Enterprise RAG Assistant project')" class="whitespace-nowrap text-[10px] font-mono px-2.5 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-teal-300 hover:border-teal-500/30 transition">
-              🔍 Enterprise RAG
-            </button>
-            <button onclick="sendQuickPrompt('How can I contact Paul or hire him?')" class="whitespace-nowrap text-[10px] font-mono px-2.5 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-teal-300 hover:border-teal-500/30 transition">
-              📬 Contact
-            </button>
-          </div>
-
-          <!-- Chat Input Form -->
-          <form id="chat-form" onsubmit="handleChatSubmit(event)" class="relative flex items-center">
-            <input 
-              type="text" 
-              id="chat-input" 
-              placeholder="Ask anything about Paul's background..." 
-              autocomplete="off"
-              class="w-full pl-3 pr-9 py-2 rounded-xl bg-neutral-900/90 border border-neutral-800 text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-teal-500/60 font-sans transition"
-            />
-            <button type="submit" aria-label="Send message" class="absolute right-1.5 p-1 rounded-lg text-teal-400 hover:text-teal-300 hover:bg-neutral-800 transition">
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-            </button>
-          </form>
-        </div>
-      </div>
-
       <!-- CARD 3: FEATURED PROJECT 1 — SMART NAVIGATION SYSTEM (2 Cols) -->
-      <div class="card-item group md:col-span-2 lg:col-span-2 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 p-6 flex flex-col justify-between transition-all duration-300 hover:border-yellow-500/40 hover:shadow-card-hover" data-category="projects ai">
+      <div class="card-item group rounded-2xl bg-neutral-900/60 border border-neutral-800/80 p-5 sm:p-6 flex flex-col justify-between transition-all duration-300 hover:border-yellow-500/40 hover:shadow-card-hover" data-category="projects ai">
         <div>
-          <div class="flex items-center justify-between mb-3">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
             <span class="px-2.5 py-1 rounded-md text-[11px] font-mono font-semibold bg-yellow-500/10 text-yellow-300 border border-yellow-500/25 flex items-center gap-1.5">
               🏆 ₹18,000 CSRC FUNDED • TOP 20 OF 100+
             </span>
@@ -363,21 +294,21 @@
 
           <div class="mt-4 grid grid-cols-3 gap-2 text-center font-mono">
             <div class="p-2 rounded-lg bg-neutral-950/60 border border-neutral-800/60">
-              <div class="text-base font-bold text-yellow-400">Top 20</div>
+              <div class="text-sm sm:text-base font-bold text-yellow-400">Top 20</div>
               <div class="text-[10px] text-neutral-400">100+ Projects</div>
             </div>
             <div class="p-2 rounded-lg bg-neutral-950/60 border border-neutral-800/60">
-              <div class="text-base font-bold text-yellow-400">₹18,000</div>
+              <div class="text-sm sm:text-base font-bold text-yellow-400">₹18,000</div>
               <div class="text-[10px] text-neutral-400">CSRC Grant</div>
             </div>
             <div class="p-2 rounded-lg bg-neutral-950/60 border border-neutral-800/60">
-              <div class="text-base font-bold text-teal-400">Edge</div>
+              <div class="text-sm sm:text-base font-bold text-teal-400">Edge</div>
               <div class="text-[10px] text-neutral-400">Real-Time CV</div>
             </div>
           </div>
         </div>
 
-        <div class="mt-5 pt-4 border-t border-neutral-800/80 flex items-center justify-between">
+        <div class="mt-5 pt-4 border-t border-neutral-800/80 flex flex-wrap items-center justify-between gap-3">
           <div class="flex flex-wrap gap-1.5">
             <span class="tech-tag">YOLO</span>
             <span class="tech-tag">A* Pathfinding</span>
@@ -391,9 +322,9 @@
       </div>
 
       <!-- CARD 4: FEATURED PROJECT 2 — AI-DIDI SIGN LANGUAGE (2 Cols) -->
-      <div class="card-item group md:col-span-2 lg:col-span-2 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 p-6 flex flex-col justify-between transition-all duration-300 hover:border-purple-500/40 hover:shadow-card-hover" data-category="projects ai">
+      <div class="card-item group rounded-2xl bg-neutral-900/60 border border-neutral-800/80 p-5 sm:p-6 flex flex-col justify-between transition-all duration-300 hover:border-purple-500/40 hover:shadow-card-hover" data-category="projects ai">
         <div>
-          <div class="flex items-center justify-between mb-3">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
             <span class="px-2.5 py-1 rounded-md text-[11px] font-mono font-semibold bg-purple-500/10 text-purple-300 border border-purple-500/25">
               SSN RESEARCH INTERNSHIP • 90%+ ACCURACY
             </span>
@@ -416,7 +347,7 @@
           </div>
         </div>
 
-        <div class="mt-5 pt-4 border-t border-neutral-800/80 flex items-center justify-between">
+        <div class="mt-5 pt-4 border-t border-neutral-800/80 flex flex-wrap items-center justify-between gap-3">
           <div class="flex flex-wrap gap-1.5">
             <span class="tech-tag">spaCy</span>
             <span class="tech-tag">Deep Learning</span>
@@ -431,9 +362,9 @@
       </div>
 
       <!-- CARD 5: PROJECT 3 — HANDWRITTEN ANSWER EVALUATION (2 Cols) -->
-      <div class="card-item group md:col-span-2 lg:col-span-2 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 p-6 flex flex-col justify-between transition-all duration-300 hover:border-emerald-500/40" data-category="projects ai">
+      <div class="card-item group rounded-2xl bg-neutral-900/60 border border-neutral-800/80 p-5 sm:p-6 flex flex-col justify-between transition-all duration-300 hover:border-emerald-500/40" data-category="projects ai">
         <div>
-          <div class="flex items-center justify-between mb-3">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
             <span class="px-2.5 py-1 rounded-md text-[11px] font-mono bg-emerald-500/10 text-emerald-300 border border-emerald-500/25">
               AUTOMATED AI EVALUATION
             </span>
@@ -453,7 +384,7 @@
           </div>
         </div>
 
-        <div class="mt-5 pt-4 border-t border-neutral-800/80 flex items-center justify-between">
+        <div class="mt-5 pt-4 border-t border-neutral-800/80 flex flex-wrap items-center justify-between gap-3">
           <div class="flex flex-wrap gap-1.5">
             <span class="tech-tag">OCR</span>
             <span class="tech-tag">NLP</span>
@@ -467,9 +398,9 @@
       </div>
 
       <!-- CARD 6: FEATURED PROJECT 4 — ENTERPRISE RAG ASSISTANT (2 Cols) -->
-      <div class="card-item group md:col-span-2 lg:col-span-2 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 p-6 flex flex-col justify-between transition-all duration-300 hover:border-blue-500/40 hover:shadow-card-hover" data-category="projects ai">
+      <div class="card-item group rounded-2xl bg-neutral-900/60 border border-neutral-800/80 p-5 sm:p-6 flex flex-col justify-between transition-all duration-300 hover:border-blue-500/40 hover:shadow-card-hover" data-category="projects ai">
         <div>
-          <div class="flex items-center justify-between mb-3">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
             <span class="px-2.5 py-1 rounded-md text-[11px] font-mono font-semibold bg-blue-500/10 text-blue-300 border border-blue-500/25 flex items-center gap-1.5">
               ⚡ HYBRID RETRIEVAL • RERANKING • 24-SWEEP EVALS
             </span>
@@ -485,21 +416,21 @@
 
           <div class="mt-4 grid grid-cols-3 gap-2 text-center font-mono">
             <div class="p-2 rounded-lg bg-neutral-950/60 border border-neutral-800/60">
-              <div class="text-base font-bold text-blue-400">Hybrid</div>
+              <div class="text-sm sm:text-base font-bold text-blue-400">Hybrid</div>
               <div class="text-[10px] text-neutral-400">BM25 + Dense RRF</div>
             </div>
             <div class="p-2 rounded-lg bg-neutral-950/60 border border-neutral-800/60">
-              <div class="text-base font-bold text-cyan-400">3 Gates</div>
+              <div class="text-sm sm:text-base font-bold text-cyan-400">3 Gates</div>
               <div class="text-[10px] text-neutral-400">Anti-Hallucination</div>
             </div>
             <div class="p-2 rounded-lg bg-neutral-950/60 border border-neutral-800/60">
-              <div class="text-base font-bold text-emerald-400">24 Configs</div>
+              <div class="text-sm sm:text-base font-bold text-emerald-400">24 Configs</div>
               <div class="text-[10px] text-neutral-400">Eval Benchmark</div>
             </div>
           </div>
         </div>
 
-        <div class="mt-5 pt-4 border-t border-neutral-800/80 flex items-center justify-between">
+        <div class="mt-5 pt-4 border-t border-neutral-800/80 flex flex-wrap items-center justify-between gap-3">
           <div class="flex flex-wrap gap-1.5">
             <span class="tech-tag">FastAPI</span>
             <span class="tech-tag">Qdrant</span>
@@ -514,9 +445,9 @@
       </div>
 
       <!-- CARD 7: MAITSYS SAP & AI INTERNSHIP (2 Cols) -->
-      <div class="card-item group md:col-span-2 lg:col-span-2 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 p-6 flex flex-col justify-between transition-all duration-300 hover:border-sky-500/40" data-category="exp ai">
+      <div class="card-item group rounded-2xl bg-neutral-900/60 border border-neutral-800/80 p-5 sm:p-6 flex flex-col justify-between transition-all duration-300 hover:border-sky-500/40" data-category="exp ai">
         <div>
-          <div class="flex items-center justify-between mb-3">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
             <span class="px-2.5 py-1 rounded-md text-[11px] font-mono bg-sky-500/10 text-sky-300 border border-sky-500/25">
               INTERNSHIP • JAN 2026 – APR 2026
             </span>
@@ -540,7 +471,7 @@
           </div>
         </div>
 
-        <div class="mt-5 pt-4 border-t border-neutral-800/80 flex items-center justify-between">
+        <div class="mt-5 pt-4 border-t border-neutral-800/80 flex flex-wrap items-center justify-between gap-3">
           <div class="flex flex-wrap gap-1.5">
             <span class="tech-tag">RAG</span>
             <span class="tech-tag">Qwen</span>
@@ -554,7 +485,7 @@
       </div>
 
       <!-- CARD 7: TECH STACK MATRIX (Col-span 2) -->
-      <div id="skills" class="card-item md:col-span-2 lg:col-span-2 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 p-6 flex flex-col justify-between transition-all duration-300 hover:border-teal-500/30" data-category="ai">
+      <div id="skills" class="card-item rounded-2xl bg-neutral-900/60 border border-neutral-800/80 p-5 sm:p-6 flex flex-col justify-between transition-all duration-300 hover:border-teal-500/30" data-category="ai">
         <div>
           <div class="flex items-center justify-between mb-4">
             <h3 class="text-lg font-bold text-white flex items-center gap-2">
@@ -622,7 +553,7 @@
       </div>
 
       <!-- CARD 9: EDUCATION & ACADEMIC MERIT (2 Cols) -->
-      <div class="card-item md:col-span-1 lg:col-span-2 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 p-5 flex flex-col justify-between transition-all duration-300 hover:border-neutral-700" data-category="exp">
+      <div class="card-item rounded-2xl bg-neutral-900/60 border border-neutral-800/80 p-5 flex flex-col justify-between transition-all duration-300 hover:border-neutral-700" data-category="exp">
         <div>
           <span class="text-xs font-mono text-neutral-500 uppercase tracking-wider">Education</span>
           
@@ -649,7 +580,7 @@
       </div>
 
       <!-- CARD 10: LEADERSHIP & IMPACT (2 Cols) -->
-      <div class="card-item md:col-span-1 lg:col-span-2 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 p-5 flex flex-col justify-between transition-all duration-300 hover:border-neutral-700" data-category="exp">
+      <div class="card-item rounded-2xl bg-neutral-900/60 border border-neutral-800/80 p-5 flex flex-col justify-between transition-all duration-300 hover:border-neutral-700" data-category="exp">
         <div>
           <span class="text-xs font-mono text-neutral-500 uppercase tracking-wider">Leadership</span>
           
@@ -676,7 +607,7 @@
     <section id="experience" class="pt-8">
       <div class="flex items-center justify-between mb-6">
         <div>
-          <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-white flex items-center gap-2">
+          <h2 class="text-lg sm:text-2xl font-bold tracking-tight text-white flex items-center gap-2">
             <span class="w-2.5 h-2.5 rounded-full bg-indigo-400"></span>
             Professional Experience Timeline
           </h2>
@@ -687,17 +618,17 @@
       <div class="space-y-4">
         
         <!-- Job 1 -->
-        <div class="p-6 rounded-2xl bg-neutral-900/50 border border-neutral-800/80 hover:border-neutral-700 transition">
+        <div class="p-5 sm:p-6 rounded-2xl bg-neutral-900/50 border border-neutral-800/80 hover:border-neutral-700 transition">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-3">
             <div>
-              <h3 class="text-lg font-bold text-white">Associate Product Developer — <span class="text-teal-400">Neeyamo</span></h3>
+              <h3 class="text-base sm:text-lg font-bold text-white leading-snug">Associate Product Developer — <span class="text-teal-400">Neeyamo</span></h3>
               <p class="text-xs font-mono text-neutral-400">Enterprise AI Chatbot (Aria) &amp; MCP Integration</p>
             </div>
-            <span class="text-xs font-mono text-teal-300 bg-teal-500/10 border border-teal-500/20 px-3 py-1 rounded-full w-fit">
+            <span class="text-xs font-mono text-teal-300 bg-teal-500/10 border border-teal-500/20 px-3 py-1 rounded-full w-fit mt-2 sm:mt-0 shrink-0">
               May 2026 – Present • India
             </span>
           </div>
-          <ul class="text-xs sm:text-sm text-neutral-400 space-y-2 list-disc list-inside">
+          <ul class="text-xs sm:text-sm text-neutral-400 space-y-2 list-disc pl-4">
             <li>Contributing to the development of <strong class="text-neutral-200">Aria</strong>, an AI-powered enterprise chatbot using Angular, Java, Spring Boot, and MySQL to automate business workflows.</li>
             <li>Designing and implementing <strong class="text-teal-300">Model Context Protocol (MCP)</strong> servers and custom tools in Java &amp; Spring Boot, enabling AI models to interact securely with enterprise business systems.</li>
             <li>Integrating <strong class="text-neutral-200">Amazon Bedrock</strong> with chatbot workflows to enable foundation models to invoke backend capabilities (leave management, confirmations, data retrieval).</li>
@@ -706,17 +637,17 @@
         </div>
 
         <!-- Job 2 -->
-        <div class="p-6 rounded-2xl bg-neutral-900/50 border border-neutral-800/80 hover:border-neutral-700 transition">
+        <div class="p-5 sm:p-6 rounded-2xl bg-neutral-900/50 border border-neutral-800/80 hover:border-neutral-700 transition">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-3">
             <div>
-              <h3 class="text-lg font-bold text-white">SAP ABAP &amp; Artificial Intelligence Intern — <span class="text-sky-400">Maitsys</span></h3>
+              <h3 class="text-base sm:text-lg font-bold text-white leading-snug">SAP ABAP &amp; Artificial Intelligence Intern — <span class="text-sky-400">Maitsys</span></h3>
               <p class="text-xs font-mono text-neutral-400">LLMs, RAG Pipelines &amp; Enterprise Backend</p>
             </div>
-            <span class="text-xs font-mono text-neutral-400 bg-neutral-800/80 px-3 py-1 rounded-full w-fit">
+            <span class="text-xs font-mono text-neutral-400 bg-neutral-800/80 px-3 py-1 rounded-full w-fit mt-2 sm:mt-0 shrink-0">
               Jan 2026 – April 2026 • Madurai, India
             </span>
           </div>
-          <ul class="text-xs sm:text-sm text-neutral-400 space-y-2 list-disc list-inside">
+          <ul class="text-xs sm:text-sm text-neutral-400 space-y-2 list-disc pl-4">
             <li>Explored architectures and applications of LLMs, VLMs, and SLMs, including practical fine-tuning experiments with the <strong class="text-neutral-200">Qwen model family</strong>.</li>
             <li>Studied and implemented components of <strong class="text-sky-300">Retrieval-Augmented Generation (RAG)</strong> pipelines including document chunking, embeddings, and context-based retrieval.</li>
             <li>Developed enterprise backend integrations using <strong class="text-neutral-200">SAP ABAP</strong>, implementing OData services and performing CRUD operations on custom tables.</li>
@@ -724,17 +655,17 @@
         </div>
 
         <!-- Job 3 -->
-        <div class="p-6 rounded-2xl bg-neutral-900/50 border border-neutral-800/80 hover:border-neutral-700 transition">
+        <div class="p-5 sm:p-6 rounded-2xl bg-neutral-900/50 border border-neutral-800/80 hover:border-neutral-700 transition">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-3">
             <div>
-              <h3 class="text-lg font-bold text-white">AI Research Intern — <span class="text-purple-400">SSN College of Engineering</span></h3>
+              <h3 class="text-base sm:text-lg font-bold text-white leading-snug">AI Research Intern — <span class="text-purple-400">SSN College of Engineering</span></h3>
               <p class="text-xs font-mono text-neutral-400">AI-DIDI Indian Sign Language Translator</p>
             </div>
-            <span class="text-xs font-mono text-neutral-400 bg-neutral-800/80 px-3 py-1 rounded-full w-fit">
+            <span class="text-xs font-mono text-neutral-400 bg-neutral-800/80 px-3 py-1 rounded-full w-fit mt-2 sm:mt-0 shrink-0">
               May 2025 – Jul 2025 • Chennai, India
             </span>
           </div>
-          <ul class="text-xs sm:text-sm text-neutral-400 space-y-2 list-disc list-inside">
+          <ul class="text-xs sm:text-sm text-neutral-400 space-y-2 list-disc pl-4">
             <li>Developed <strong class="text-purple-300">AI-DIDI</strong>, an NLP-based Indian Sign Language translator tested with 30+ deaf students, achieving <strong class="text-neutral-200">&gt;90% comprehension accuracy</strong>.</li>
             <li>Built an AI pipeline for text processing and gesture generation using spaCy and deep learning techniques.</li>
             <li>Integrated 3D avatar and motion capture systems using Blender, Unreal Engine, and Move AI; conducted dataset preprocessing and model evaluation.</li>
@@ -746,7 +677,7 @@
 
     <!-- CONTACT / GET IN TOUCH -->
     <section id="contact" class="pt-8">
-      <div class="rounded-3xl bg-gradient-to-b from-neutral-900 to-black border border-neutral-800 p-8 sm:p-10 relative overflow-hidden text-center space-y-6">
+      <div class="rounded-3xl bg-gradient-to-b from-neutral-900 to-black border border-neutral-800 p-5 sm:p-10 relative overflow-hidden text-center space-y-6">
         <div class="absolute inset-0 bg-teal-500/5 rounded-3xl pointer-events-none"></div>
 
         <div class="max-w-xl mx-auto space-y-3">
@@ -831,7 +762,7 @@
 
   <!-- ==================== PROJECT DETAILS MODAL ==================== -->
   <div id="project-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
-    <div class="bg-neutral-900 border border-neutral-800 rounded-2xl max-w-2xl w-full p-6 sm:p-8 space-y-5 relative max-h-[90vh] overflow-y-auto">
+    <div class="bg-neutral-900 border border-neutral-800 rounded-2xl max-w-2xl w-full p-5 sm:p-8 space-y-5 relative max-h-[90vh] overflow-y-auto">
       
       <!-- Close Button -->
       <button onclick="closeModal()" class="absolute top-5 right-5 text-neutral-400 hover:text-white p-1 rounded-lg bg-neutral-800/50">
@@ -842,6 +773,71 @@
         <!-- Injected via JavaScript -->
       </div>
     </div>
+  </div>
+
+  <!-- ==================== FLOATING AI CHAT WIDGET ==================== -->
+  <div id="chat-launcher-wrap" class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[60] flex items-center gap-3">
+    <!-- One-time hint bubble -->
+    <div id="chat-hint" class="chat-hint hidden sm:block pointer-events-none">Hi! Ask me about Paul 👋</div>
+
+    <button id="chat-launcher" onclick="toggleChat()" aria-label="Open AI assistant" aria-expanded="false" title="Ask Paul's AI assistant" class="chat-fab">
+      <span class="chat-fab-ring" aria-hidden="true"></span>
+      <!-- open icon: sparkle bot -->
+      <svg id="chat-icon-open" class="w-6 h-6 relative" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="4" y="8" width="16" height="11" rx="4"/>
+        <path d="M12 8V5"/><circle cx="12" cy="4" r="1.2" fill="currentColor"/>
+        <circle cx="9" cy="13.5" r="1.3" fill="currentColor" stroke="none"/><circle cx="15" cy="13.5" r="1.3" fill="currentColor" stroke="none"/>
+        <path d="M2 13v2M22 13v2"/>
+      </svg>
+      <!-- close icon -->
+      <svg id="chat-icon-close" class="w-6 h-6 relative hidden" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      <span id="chat-fab-dot" class="chat-fab-dot" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <div id="chat-panel" role="dialog" aria-label="Paul's AI Assistant"
+    class="chat-panel hidden fixed z-[60] inset-x-0 bottom-0 sm:inset-x-auto sm:bottom-[5.5rem] sm:right-6 sm:w-[370px] flex-col bg-neutral-950 border border-neutral-800 sm:rounded-2xl rounded-t-2xl shadow-2xl overflow-hidden">
+    <!-- Header -->
+    <div class="flex items-center justify-between px-4 py-3 border-b border-neutral-800 bg-neutral-900/80">
+      <div class="flex items-center gap-2.5 min-w-0">
+        <div class="w-8 h-8 rounded-lg bg-teal-500/15 border border-teal-500/30 flex items-center justify-center text-sm shrink-0">🤖</div>
+        <div class="min-w-0">
+          <h4 class="text-sm font-bold text-white leading-tight">Paul's AI Assistant</h4>
+          <p class="text-[10px] font-mono text-teal-400 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse"></span>Online &bull; Llama on Groq</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-1">
+        <button onclick="resetChat()" title="Reset conversation" aria-label="Reset conversation" class="p-1.5 rounded-md text-neutral-400 hover:text-white hover:bg-neutral-800 transition">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+        </button>
+        <button onclick="toggleChat(false)" title="Close" aria-label="Close assistant" class="p-1.5 rounded-md text-neutral-400 hover:text-white hover:bg-neutral-800 transition">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Messages -->
+    <div id="chat-messages" class="flex-1 overflow-y-auto px-4 py-3 space-y-3 text-[13px]"></div>
+
+    <!-- Quick prompts -->
+    <div id="chat-chips" class="flex items-center gap-1.5 overflow-x-auto no-scrollbar px-4 pb-2">
+      <button onclick="sendQuickPrompt('What are Paul\'s top AI & ML skills?')" class="chat-chip">⚡ Top skills</button>
+      <button onclick="sendQuickPrompt('What does Paul do at Neeyamo with Aria and MCP?')" class="chat-chip">🤖 Neeyamo &amp; MCP</button>
+      <button onclick="sendQuickPrompt('What projects has Paul built?')" class="chat-chip">📂 Projects</button>
+      <button onclick="sendQuickPrompt('Tell me about the Smart Navigation project')" class="chat-chip">🏆 Smart Navigation</button>
+      <button onclick="sendQuickPrompt('Tell me about the AI-DIDI sign language project')" class="chat-chip">🤟 AI-DIDI</button>
+      <button onclick="sendQuickPrompt('Why should we hire Paul for an AI/ML role?')" class="chat-chip">🎯 Why hire him</button>
+      <button onclick="sendQuickPrompt('How can I contact Paul?')" class="chat-chip">📬 Contact</button>
+    </div>
+
+    <!-- Input -->
+    <form id="chat-form" onsubmit="handleChatSubmit(event)" class="flex items-center gap-2 px-3 pb-3 pt-1">
+      <input type="text" id="chat-input" maxlength="500" placeholder="Ask about Paul's work..." autocomplete="off"
+        class="flex-1 min-w-0 px-3 py-2.5 rounded-xl bg-neutral-900 border border-neutral-800 text-base sm:text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-teal-500/60 transition" />
+      <button type="submit" id="chat-send" aria-label="Send message" class="p-2.5 rounded-xl bg-teal-500 text-black hover:bg-teal-400 disabled:opacity-40 transition shrink-0">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      </button>
+    </form>
   </div>
 
   <script src="script.js"></script>
