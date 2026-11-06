@@ -1,19 +1,19 @@
-# Paul Jacksen B — AI/ML Engineer Bento Portfolio
+# Paul Jacksen B — AI/ML Engineer Portfolio
 
-A modern, high-performance personal portfolio inspired by the signature **Bento-grid design style** (similar to [jestsee.com/#bento](https://www.jestsee.com/#bento)), custom-tailored for **Paul Jacksen B** based on your resume and projects.
+A modern, high-performance personal portfolio custom-tailored for **Paul Jacksen B** based on your resume and projects.
 
 ---
 
 ## 🌟 Key Features & Highlights
 
-1. **Bento Grid Architecture:**
+1. **Featured Architecture & Modular Showcase:**
    - **Spotlight Role Card:** Highlights your work at **Neeyamo** on **Aria** (Enterprise AI Chatbot, Model Context Protocol servers in Java, Amazon Bedrock, Spring Boot, Angular).
    - **Interactive MCP Console Simulator:** Recruiters and engineers can click live tool buttons (`list_tools()`, `invoke("manage_leave")`, `rag.ask()`, `bedrock.query()`) to see simulated JSON-RPC MCP calls and foundation model outputs in real time.
    - **Featured Projects:**
-     - ⚡ **Enterprise RAG Assistant:** Document-grounded QA engine with BM25 + dense vector hybrid retrieval, Reciprocal Rank Fusion (RRF), cross-encoder reranking, anti-hallucination gates, and a 24-configuration automated empirical evaluation sweep.
      - 🏆 **Smart Navigation System:** Indoor railway guidance with YOLO & A* pathfinding (Selected Top 20 of 100+ & awarded ₹18,000 CSRC funding).
      - 🤟 **AI-DIDI (Sign Language Translator):** 90%+ comprehension accuracy tested with 30+ deaf students, using spaCy, Blender, Unreal Engine, and Move AI.
      - 📝 **Handwritten Answer Evaluation:** Automated grading pipeline using OCR, NLP, and LLM APIs.
+     - ⚡ **Enterprise RAG Assistant:** Document-grounded QA engine with BM25 + dense vector hybrid retrieval, Reciprocal Rank Fusion (RRF), cross-encoder reranking, anti-hallucination gates, and a 24-configuration automated empirical evaluation sweep.
    - **Internship Milestone:** **Maitsys** (Qwen model family fine-tuning, RAG pipelines, SAP ABAP OData).
    - **Education & Honors:** Anna University Regional Campus Madurai (B.E. CSE Honours, 8.43 CGPA).
    - **Leadership:** Secretary of ICONICS Association (Coordinating 4 clubs & campus events).
@@ -22,7 +22,7 @@ A modern, high-performance personal portfolio inspired by the signature **Bento-
 2. **Interactive Polish:**
    - **Live IST Clock:** Displays real-time local time (`IST UTC+5:30`) with a pulsating availability beacon.
    - **One-Click Email Copy:** Copies `pauljacksenb@gmail.com` with animated feedback.
-   - **Filter Tabs:** Filter bento cards by `All`, `AI / GenAI`, `Projects`, or `Experience`.
+   - **Filter Tabs:** Filter showcase cards by `All`, `AI / GenAI`, `Projects`, or `Experience`.
    - **Deep-Dive Case Study Modals:** Click "Details &rarr;" on any card to read full architecture, challenges, and metrics.
    - **Zero Build Friction:** No complex build chains required — fully compatible with direct browser preview or static hosting.
 
@@ -49,12 +49,12 @@ Then visit `http://localhost:3000`.
    ```bash
    git init
    git add .
-   git commit -m "Initial commit of Bento Portfolio"
+   git commit -m "Initial commit of portfolio"
    git branch -M main
-   git remote add origin https://github.com/Faactos/portfolio.git
+   git remote add origin https://github.com/rajeshwari-18/portfolio.git
    git push -u origin main
    ```
-2. In your GitHub repo, go to **Settings &rarr; Pages** &rarr; Select `main` branch root (`/`) &rarr; **Save**. Your site will be live at `https://faactos.github.io/portfolio`.
+2. In your GitHub repo, go to **Settings &rarr; Pages** &rarr; Select `main` branch root (`/`) &rarr; **Save**.
 
-### Vercel / Netlify:
-* Drag and drop this folder directly into the [Vercel Dashboard](https://vercel.com) or [Netlify Drop](https://app.netlify.com/drop) for instant deployment with SSL and custom domain support.
+### Vercel:
+* Import your GitHub repository directly into the [Vercel Dashboard](https://vercel.com) for instant deployment with SSL and custom domain support.

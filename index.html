@@ -40,8 +40,8 @@
             }
           },
           boxShadow: {
-            'bento': '0 0 0 1px rgba(255, 255, 255, 0.06), 0 10px 30px -10px rgba(0, 0, 0, 0.5)',
-            'bento-hover': '0 0 0 1px rgba(45, 212, 191, 0.3), 0 20px 40px -15px rgba(20, 184, 166, 0.15)',
+            'card': '0 0 0 1px rgba(255, 255, 255, 0.06), 0 10px 30px -10px rgba(0, 0, 0, 0.5)',
+            'card-hover': '0 0 0 1px rgba(45, 212, 191, 0.3), 0 20px 40px -15px rgba(20, 184, 166, 0.15)',
             'glow': '0 0 25px -5px rgba(45, 212, 191, 0.25)'
           }
         }
@@ -198,31 +198,31 @@
       </div>
     </section>
 
-    <!-- SECTION TITLE: BENTO GRID / PROJECTS -->
+    <!-- SECTION TITLE: PROJECTS & SHOWCASE -->
     <div id="projects" class="scroll-mt-28"></div>
-    <div id="bento" class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2">
+    <div id="showcase" class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2">
       <div class="space-y-1">
         <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-white flex items-center gap-2">
           <span class="w-2.5 h-2.5 rounded-full bg-teal-400"></span>
-          Featured Projects &amp; Bento Showcase
+          Featured Projects &amp; Systems Showcase
         </h2>
         <p class="text-xs sm:text-sm text-neutral-400">A modular overview of production systems, architecture, and research.</p>
       </div>
 
       <!-- Filter Tabs -->
       <div class="flex overflow-x-auto no-scrollbar items-center gap-1 p-1 bg-neutral-900 border border-neutral-800 rounded-xl text-xs font-mono w-fit">
-        <button onclick="filterBento('all')" class="bento-filter-btn active whitespace-nowrap px-3 py-1 rounded-lg text-neutral-300 hover:text-white transition" data-filter="all">All</button>
-        <button onclick="filterBento('ai')" class="bento-filter-btn whitespace-nowrap px-3 py-1 rounded-lg text-neutral-400 hover:text-white transition" data-filter="ai">AI / GenAI</button>
-        <button onclick="filterBento('projects')" class="bento-filter-btn whitespace-nowrap px-3 py-1 rounded-lg text-neutral-400 hover:text-white transition" data-filter="projects">Projects</button>
-        <button onclick="filterBento('exp')" class="bento-filter-btn whitespace-nowrap px-3 py-1 rounded-lg text-neutral-400 hover:text-white transition" data-filter="exp">Experience</button>
+        <button onclick="filterCategory('all')" class="filter-btn active whitespace-nowrap px-3 py-1 rounded-lg text-neutral-300 hover:text-white transition" data-filter="all">All</button>
+        <button onclick="filterCategory('ai')" class="filter-btn whitespace-nowrap px-3 py-1 rounded-lg text-neutral-400 hover:text-white transition" data-filter="ai">AI / GenAI</button>
+        <button onclick="filterCategory('projects')" class="filter-btn whitespace-nowrap px-3 py-1 rounded-lg text-neutral-400 hover:text-white transition" data-filter="projects">Projects</button>
+        <button onclick="filterCategory('exp')" class="filter-btn whitespace-nowrap px-3 py-1 rounded-lg text-neutral-400 hover:text-white transition" data-filter="exp">Experience</button>
       </div>
     </div>
 
-    <!-- ==================== THE BENTO GRID ==================== -->
+    <!-- ==================== FEATURED SHOWCASE ==================== -->
     <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
 
       <!-- CARD 1: CURRENT ROLE SPOTLIGHT (Large 2 Cols) -->
-      <div class="bento-card group md:col-span-2 lg:col-span-2 rounded-2xl bg-gradient-to-b from-neutral-900/90 to-neutral-950/90 border border-neutral-800/80 p-6 flex flex-col justify-between relative overflow-hidden transition-all duration-300 hover:border-teal-500/40 hover:shadow-bento-hover" data-category="exp ai">
+      <div class="card-item group md:col-span-2 lg:col-span-2 rounded-2xl bg-gradient-to-b from-neutral-900/90 to-neutral-950/90 border border-neutral-800/80 p-6 flex flex-col justify-between relative overflow-hidden transition-all duration-300 hover:border-teal-500/40 hover:shadow-card-hover" data-category="exp ai">
         <div class="absolute -right-10 -bottom-10 w-44 h-44 bg-teal-500/10 rounded-full blur-3xl pointer-events-none group-hover:bg-teal-500/20 transition-all"></div>
         
         <div>
@@ -276,7 +276,7 @@
       </div>
 
       <!-- CARD 2: INTERACTIVE MCP SIMULATOR CONSOLE (2 Cols) -->
-      <div class="bento-card md:col-span-1 lg:col-span-2 rounded-2xl bg-neutral-950 border border-neutral-800/80 p-5 flex flex-col justify-between font-mono relative overflow-hidden transition-all duration-300 hover:border-cyan-500/40" data-category="ai">
+      <div class="card-item md:col-span-1 lg:col-span-2 rounded-2xl bg-neutral-950 border border-neutral-800/80 p-5 flex flex-col justify-between font-mono relative overflow-hidden transition-all duration-300 hover:border-cyan-500/40" data-category="ai">
         <div>
           <!-- Terminal Header -->
           <div class="flex items-center justify-between pb-3 mb-3 border-b border-neutral-800">
@@ -321,7 +321,7 @@
       </div>
 
       <!-- CARD 3: FEATURED PROJECT 1 — SMART NAVIGATION SYSTEM (2 Cols) -->
-      <div class="bento-card group md:col-span-2 lg:col-span-2 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 p-6 flex flex-col justify-between transition-all duration-300 hover:border-yellow-500/40 hover:shadow-bento-hover" data-category="projects ai">
+      <div class="card-item group md:col-span-2 lg:col-span-2 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 p-6 flex flex-col justify-between transition-all duration-300 hover:border-yellow-500/40 hover:shadow-card-hover" data-category="projects ai">
         <div>
           <div class="flex items-center justify-between mb-3">
             <span class="px-2.5 py-1 rounded-md text-[11px] font-mono font-semibold bg-yellow-500/10 text-yellow-300 border border-yellow-500/25 flex items-center gap-1.5">
@@ -367,7 +367,7 @@
       </div>
 
       <!-- CARD 4: FEATURED PROJECT 2 — AI-DIDI SIGN LANGUAGE (2 Cols) -->
-      <div class="bento-card group md:col-span-2 lg:col-span-2 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 p-6 flex flex-col justify-between transition-all duration-300 hover:border-purple-500/40 hover:shadow-bento-hover" data-category="projects ai">
+      <div class="card-item group md:col-span-2 lg:col-span-2 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 p-6 flex flex-col justify-between transition-all duration-300 hover:border-purple-500/40 hover:shadow-card-hover" data-category="projects ai">
         <div>
           <div class="flex items-center justify-between mb-3">
             <span class="px-2.5 py-1 rounded-md text-[11px] font-mono font-semibold bg-purple-500/10 text-purple-300 border border-purple-500/25">
@@ -407,7 +407,7 @@
       </div>
 
       <!-- CARD 5: PROJECT 3 — HANDWRITTEN ANSWER EVALUATION (2 Cols) -->
-      <div class="bento-card group md:col-span-2 lg:col-span-2 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 p-6 flex flex-col justify-between transition-all duration-300 hover:border-emerald-500/40" data-category="projects ai">
+      <div class="card-item group md:col-span-2 lg:col-span-2 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 p-6 flex flex-col justify-between transition-all duration-300 hover:border-emerald-500/40" data-category="projects ai">
         <div>
           <div class="flex items-center justify-between mb-3">
             <span class="px-2.5 py-1 rounded-md text-[11px] font-mono bg-emerald-500/10 text-emerald-300 border border-emerald-500/25">
@@ -443,7 +443,7 @@
       </div>
 
       <!-- CARD 6: FEATURED PROJECT 4 — ENTERPRISE RAG ASSISTANT (2 Cols) -->
-      <div class="bento-card group md:col-span-2 lg:col-span-2 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 p-6 flex flex-col justify-between transition-all duration-300 hover:border-blue-500/40 hover:shadow-bento-hover" data-category="projects ai">
+      <div class="card-item group md:col-span-2 lg:col-span-2 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 p-6 flex flex-col justify-between transition-all duration-300 hover:border-blue-500/40 hover:shadow-card-hover" data-category="projects ai">
         <div>
           <div class="flex items-center justify-between mb-3">
             <span class="px-2.5 py-1 rounded-md text-[11px] font-mono font-semibold bg-blue-500/10 text-blue-300 border border-blue-500/25 flex items-center gap-1.5">
@@ -490,7 +490,7 @@
       </div>
 
       <!-- CARD 7: MAITSYS SAP & AI INTERNSHIP (2 Cols) -->
-      <div class="bento-card group md:col-span-2 lg:col-span-2 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 p-6 flex flex-col justify-between transition-all duration-300 hover:border-sky-500/40" data-category="exp ai">
+      <div class="card-item group md:col-span-2 lg:col-span-2 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 p-6 flex flex-col justify-between transition-all duration-300 hover:border-sky-500/40" data-category="exp ai">
         <div>
           <div class="flex items-center justify-between mb-3">
             <span class="px-2.5 py-1 rounded-md text-[11px] font-mono bg-sky-500/10 text-sky-300 border border-sky-500/25">
@@ -530,7 +530,7 @@
       </div>
 
       <!-- CARD 7: TECH STACK MATRIX (Col-span 2) -->
-      <div id="skills" class="bento-card md:col-span-2 lg:col-span-2 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 p-6 flex flex-col justify-between transition-all duration-300 hover:border-teal-500/30" data-category="ai">
+      <div id="skills" class="card-item md:col-span-2 lg:col-span-2 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 p-6 flex flex-col justify-between transition-all duration-300 hover:border-teal-500/30" data-category="ai">
         <div>
           <div class="flex items-center justify-between mb-4">
             <h3 class="text-lg font-bold text-white flex items-center gap-2">
@@ -598,7 +598,7 @@
       </div>
 
       <!-- CARD 9: EDUCATION & ACADEMIC MERIT (2 Cols) -->
-      <div class="bento-card md:col-span-1 lg:col-span-2 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 p-5 flex flex-col justify-between transition-all duration-300 hover:border-neutral-700" data-category="exp">
+      <div class="card-item md:col-span-1 lg:col-span-2 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 p-5 flex flex-col justify-between transition-all duration-300 hover:border-neutral-700" data-category="exp">
         <div>
           <span class="text-xs font-mono text-neutral-500 uppercase tracking-wider">Education</span>
           
@@ -625,7 +625,7 @@
       </div>
 
       <!-- CARD 10: LEADERSHIP & IMPACT (2 Cols) -->
-      <div class="bento-card md:col-span-1 lg:col-span-2 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 p-5 flex flex-col justify-between transition-all duration-300 hover:border-neutral-700" data-category="exp">
+      <div class="card-item md:col-span-1 lg:col-span-2 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 p-5 flex flex-col justify-between transition-all duration-300 hover:border-neutral-700" data-category="exp">
         <div>
           <span class="text-xs font-mono text-neutral-500 uppercase tracking-wider">Leadership</span>
           
@@ -720,7 +720,7 @@
       </div>
     </section>
 
-    <!-- CONTACT / GET IN TOUCH FOOTER BENTO -->
+    <!-- CONTACT / GET IN TOUCH -->
     <section id="contact" class="pt-8">
       <div class="rounded-3xl bg-gradient-to-b from-neutral-900 to-black border border-neutral-800 p-8 sm:p-10 relative overflow-hidden text-center space-y-6">
         <div class="absolute inset-0 bg-teal-500/5 rounded-3xl pointer-events-none"></div>
@@ -798,7 +798,7 @@
         </div>
 
         <div class="pt-4 text-neutral-500 text-xs font-mono">
-          &copy; <span id="year"></span> Paul Jacksen B. Designed in clean Bento-grid style.
+          &copy; <span id="year"></span> Paul Jacksen B. Built with modern web technologies.
         </div>
       </div>
     </section>

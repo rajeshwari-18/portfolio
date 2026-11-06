@@ -1,4 +1,4 @@
-/* Custom Bento Grid Styles for Paul Jacksen B */
+/* Custom Styles for Paul Jacksen B Portfolio */
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
@@ -34,15 +34,15 @@ body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* Bento Card Base & Transitions */
-.bento-card {
+/* Showcase Card Base & Transitions */
+.card-item {
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
               border-color 0.25s ease, 
               box-shadow 0.25s ease;
   will-change: transform, border-color;
 }
 
-.bento-card:hover {
+.card-item:hover {
   transform: translateY(-2px);
 }
 
@@ -84,7 +84,7 @@ body {
 }
 
 /* Active Filter Buttons */
-.bento-filter-btn.active {
+.filter-btn.active {
   background-color: #14b8a6;
   color: #000000;
   font-weight: 600;

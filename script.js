@@ -1,4 +1,4 @@
-// JavaScript for Paul Jacksen B — Bento Portfolio
+// JavaScript for Paul Jacksen B — Portfolio
 
 document.addEventListener('DOMContentLoaded', () => {
   // Set Current Year
@@ -12,9 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Handle Projects Nav Click
   document.querySelectorAll('a[href="#projects"]').forEach(link => {
     link.addEventListener('click', () => {
-      const activeFilter = document.querySelector('.bento-filter-btn.active');
+      const activeFilter = document.querySelector('.filter-btn.active');
       if (activeFilter && activeFilter.getAttribute('data-filter') === 'exp') {
-        filterBento('all');
+        filterCategory('all');
       }
     });
   });
@@ -56,9 +56,9 @@ function copyEmail() {
   });
 }
 
-// Bento Filter Functionality
-function filterBento(category) {
-  const buttons = document.querySelectorAll('.bento-filter-btn');
+// Showcase Filter Functionality
+function filterCategory(category) {
+  const buttons = document.querySelectorAll('.filter-btn');
   buttons.forEach(btn => {
     if (btn.getAttribute('data-filter') === category) {
       btn.classList.add('active');
@@ -67,7 +67,7 @@ function filterBento(category) {
     }
   });
 
-  const cards = document.querySelectorAll('.bento-card');
+  const cards = document.querySelectorAll('.card-item');
   cards.forEach(card => {
     const catAttr = card.getAttribute('data-category') || '';
     if (category === 'all' || catAttr.includes(category)) {
