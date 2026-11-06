@@ -78,78 +78,187 @@ function filterCategory(category) {
   });
 }
 
-// Interactive MCP Console Simulation
-const mcpOutputs = {
-  status: `
-<span class="text-neutral-500">// Calling jsonrpc method: tools/list</span>
-{
-  <span class="text-cyan-400">"tools"</span>: [
-    {
-      <span class="text-cyan-300">"name"</span>: "manage_leave",
-      <span class="text-cyan-300">"description"</span>: "Approve or create employee leave workflow in HRMS",
-      <span class="text-cyan-300">"inputSchema"</span>: { "type": "object", "properties": { "empId": "string", "days": "number" } }
-    },
-    {
-      <span class="text-cyan-300">"name"</span>: "query_business_records",
-      <span class="text-cyan-300">"description"</span>: "Fetch enterprise data from MySQL through Spring Boot JPA"
-    },
-    {
-      <span class="text-cyan-300">"name"</span>: "bedrock_intent_dispatcher",
-      <span class="text-cyan-300">"description"</span>: "Route multi-turn prompt context to foundation models"
-    }
-  ]
-}
-`,
-  leave: `
-<span class="text-neutral-500">// Invoking MCP tool: manage_leave</span>
-<span class="text-yellow-400">POST</span> /mcp/tools/call
-{
-  <span class="text-cyan-400">"tool"</span>: "manage_leave",
-  <span class="text-cyan-400">"arguments"</span>: { "empId": "EMP-8492", "type": "Casual", "days": 2 }
-}
-<span class="text-teal-400">&larr; MCP Response (200 OK):</span>
-{
-  <span class="text-cyan-300">"status"</span>: "SUCCESS",
-  <span class="text-cyan-300">"confirmationCode"</span>: "LV-2026-X9A",
-  <span class="text-cyan-300">"remainingBalance"</span>: 14,
-  <span class="text-cyan-300">"message"</span>: "Leave request logged and confirmation delivered to Aria frontend."
-}
-`,
-  bedrock: `
-<span class="text-neutral-500">// Amazon Bedrock Model Invocation via Spring Boot</span>
-<span class="text-indigo-400">Model:</span> amazon.titan-text-express / claude-3-sonnet
-<span class="text-indigo-400">Prompt:</span> "Summarize leave policy and trigger approval workflow."
-<span class="text-teal-400">&larr; Foundation Model Payload:</span>
-{
-  <span class="text-cyan-300">"intent"</span>: "LEAVE_APPROVAL",
-  <span class="text-cyan-300">"confidence"</span>: 0.984,
-  <span class="text-cyan-300">"actionInvoked"</span>: "mcp://aria-server/tools/manage_leave",
-  <span class="text-cyan-300">"uiWorkflow"</span>: "Triggered interactive confirmation dialog in Angular."
-}
-`,
-  rag: `
-<span class="text-neutral-500">// Enterprise RAG Assistant: Hybrid Vector + BM25 & Cross-Encoder</span>
-<span class="text-yellow-400">POST</span> /ask
-{
-  <span class="text-cyan-400">"question"</span>: "How many days of annual leave do full-time employees get?"
-}
-<span class="text-teal-400">&larr; Grounded Answer & Citations (200 OK):</span>
-{
-  <span class="text-cyan-300">"answer"</span>: "Full-time employees receive 20 days of paid annual leave per calendar year [1, p.4].",
-  <span class="text-cyan-300">"citations"</span>: [
-    { <span class="text-cyan-400">"marker"</span>: 1, <span class="text-cyan-400">"doc"</span>: "acme-leave-policy.md", <span class="text-cyan-400">"page"</span>: 4, <span class="text-cyan-400">"rerank_score"</span>: 0.942 }
-  ],
-  <span class="text-cyan-300">"refusalTriggered"</span>: false,
-  <span class="text-cyan-300">"pipeline"</span>: "PyMuPDF -> bge-small + BM25 -> RRF Fusion -> bge-reranker-base -> Groq/Ollama",
-  <span class="text-cyan-300">"latency_ms"</span>: 148
-}
-`
-};
+// ==================== AI CHATBOT SYSTEM ====================
+let chatHistory = [];
 
-function runMcpDemo(type) {
-  const consoleEl = document.getElementById('mcp-console-output');
-  if (!consoleEl) return;
-  consoleEl.innerHTML = mcpOutputs[type] || '<p class="text-red-400">Command not recognized.</p>';
+function handleChatSubmit(event) {
+  event.preventDefault();
+  const inputEl = document.getElementById('chat-input');
+  if (!inputEl) return;
+  const message = inputEl.value.trim();
+  if (!message) return;
+
+  inputEl.value = '';
+  executeChatTurn(message);
+}
+
+function sendQuickPrompt(promptText) {
+  executeChatTurn(promptText);
+}
+
+function appendMessage(role, text) {
+  const container = document.getElementById('chat-messages');
+  if (!container) return;
+
+  const msgDiv = document.createElement('div');
+  msgDiv.className = 'flex items-start gap-2';
+
+  if (role === 'user') {
+    msgDiv.innerHTML = `
+      <div class="ml-auto p-2.5 rounded-2xl rounded-tr-sm bg-teal-500 text-black font-medium leading-relaxed max-w-[85%] text-xs shadow-md">
+        ${escapeHtml(text)}
+      </div>
+    `;
+  } else {
+    msgDiv.innerHTML = `
+      <div class="w-5 h-5 rounded-md bg-teal-500/20 text-teal-300 flex items-center justify-center text-[10px] shrink-0 mt-0.5 font-mono">
+        AI
+      </div>
+      <div class="p-2.5 rounded-2xl rounded-tl-sm bg-neutral-900/90 border border-neutral-800 text-neutral-300 leading-relaxed max-w-[90%] text-xs">
+        ${formatMarkdown(text)}
+      </div>
+    `;
+  }
+
+  container.appendChild(msgDiv);
+  container.scrollTop = container.scrollHeight;
+}
+
+function appendTypingIndicator() {
+  const container = document.getElementById('chat-messages');
+  if (!container) return null;
+
+  const typingDiv = document.createElement('div');
+  typingDiv.id = 'typing-indicator';
+  typingDiv.className = 'flex items-start gap-2';
+  typingDiv.innerHTML = `
+    <div class="w-5 h-5 rounded-md bg-teal-500/20 text-teal-300 flex items-center justify-center text-[10px] shrink-0 mt-0.5 font-mono">
+      AI
+    </div>
+    <div class="p-2.5 rounded-2xl rounded-tl-sm bg-neutral-900/90 border border-neutral-800 text-neutral-400 text-xs flex items-center gap-1.5">
+      <span class="w-1.5 h-1.5 rounded-full bg-teal-400 animate-bounce"></span>
+      <span class="w-1.5 h-1.5 rounded-full bg-teal-400 animate-bounce" style="animation-delay: 0.2s"></span>
+      <span class="w-1.5 h-1.5 rounded-full bg-teal-400 animate-bounce" style="animation-delay: 0.4s"></span>
+      <span class="text-[10px] font-mono text-neutral-500 ml-1">Thinking...</span>
+    </div>
+  `;
+  container.appendChild(typingDiv);
+  container.scrollTop = container.scrollHeight;
+  return typingDiv;
+}
+
+function removeTypingIndicator() {
+  const el = document.getElementById('typing-indicator');
+  if (el) el.remove();
+}
+
+function resetChat() {
+  chatHistory = [];
+  const container = document.getElementById('chat-messages');
+  if (!container) return;
+  container.innerHTML = `
+    <div class="flex items-start gap-2">
+      <div class="w-5 h-5 rounded-md bg-teal-500/20 text-teal-300 flex items-center justify-center text-[10px] shrink-0 mt-0.5 font-mono">
+        AI
+      </div>
+      <div class="p-2.5 rounded-2xl rounded-tl-sm bg-neutral-900/90 border border-neutral-800 text-neutral-300 leading-relaxed max-w-[90%]">
+        Hi there! 👋 I am Paul's AI Assistant. Ask me anything about Paul's experience at <span class="text-white font-medium">Neeyamo</span>, his <span class="text-teal-300">MCP servers</span>, projects, or technical skills!
+      </div>
+    </div>
+  `;
+}
+
+async function executeChatTurn(userText) {
+  appendMessage('user', userText);
+  chatHistory.push({ role: 'user', content: userText });
+
+  appendTypingIndicator();
+
+  try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 6000);
+
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: userText, history: chatHistory }),
+      signal: controller.signal
+    });
+    clearTimeout(timeoutId);
+
+    if (res.ok) {
+      const data = await res.json();
+      removeTypingIndicator();
+      if (data && data.reply) {
+        appendMessage('assistant', data.reply);
+        chatHistory.push({ role: 'assistant', content: data.reply });
+        return;
+      }
+    }
+  } catch (err) {
+    // Falls through to built-in knowledge matcher
+  }
+
+  // Built-in intelligent response engine (instant & offline-resilient)
+  removeTypingIndicator();
+  const fallbackReply = generateLocalPortfolioResponse(userText);
+  appendMessage('assistant', fallbackReply);
+  chatHistory.push({ role: 'assistant', content: fallbackReply });
+}
+
+function generateLocalPortfolioResponse(query) {
+  const q = query.toLowerCase();
+
+  if (q.includes('skill') || q.includes('stack') || q.includes('tech') || q.includes('language') || q.includes('tool')) {
+    return "Paul's core technical stack includes:\n• **AI & GenAI:** Model Context Protocol (MCP), Amazon Bedrock, LLMs/SLMs/VLMs, RAG Pipelines, Qwen fine-tuning, Qdrant\n• **ML & Vision:** PyTorch, TensorFlow, Scikit-learn, YOLO, spaCy\n• **Backend & Enterprise:** Java, Spring Boot, MySQL, REST APIs, SAP ABAP, Docker\n• **Frontend:** Angular, Streamlit, Python";
+  }
+
+  if (q.includes('neeyamo') || q.includes('aria') || q.includes('mcp') || q.includes('current role') || q.includes('job') || q.includes('work')) {
+    return "Paul currently works as an **Associate Product Developer at Neeyamo** (May 2026 – Present). He is actively contributing to **Aria**, an enterprise AI chatbot. His work centers on engineering custom **Model Context Protocol (MCP)** servers in Java & Spring Boot to connect AI models with enterprise business APIs, and integrating **Amazon Bedrock** foundation models into automated workflows (like leave management and interactive confirmations).";
+  }
+
+  if (q.includes('rag') || q.includes('enterprise rag') || q.includes('retrieval') || q.includes('assistant')) {
+    return "Paul built the **Enterprise RAG Assistant**, a production-grade document Q&A engine. Key highlights:\n• **Hybrid Search:** Fuses BM25 lexical search and BAAI bge-small vector embeddings using Reciprocal Rank Fusion (RRF).\n• **Cross-Encoder Reranking:** bge-reranker-base for precise passage scoring.\n• **Zero-Hallucination Triple Gate:** Enforces score floors, mandatory citations `[n]`, and strict refusal accuracy.\n• **24-Sweep Benchmark:** Automated evaluation sweep measuring Recall@k, nDCG, MRR, and p50 latency on gold datasets.";
+  }
+
+  if (q.includes('navigation') || q.includes('smart navigation') || q.includes('yolo') || q.includes('csrc') || q.includes('fund')) {
+    return "The **Smart Navigation & Crowd Heatmap System** is an edge AI navigation solution for complex indoor railway stations. Paul trained a YOLO object detection pipeline combined with an A* pathfinding algorithm for real-time guidance and heatmap crowd routing. The project was selected among the **Top 20 of 100+ projects** and won a **₹18,000 CSRC research grant**!";
+  }
+
+  if (q.includes('didi') || q.includes('sign language') || q.includes('deaf') || q.includes('ssn') || q.includes('avatar')) {
+    return "**AI-DIDI** is an Indian Sign Language (ISL) translator Paul built during his research internship at SSN College of Engineering. It converts text to syntactic ISL via spaCy and drives real-time 3D avatar motion synthesized with Unreal Engine, Blender, and Move AI. It was user-tested with **30+ deaf students**, achieving **>90% comprehension accuracy**!";
+  }
+
+  if (q.includes('handwritten') || q.includes('evaluation') || q.includes('ocr') || q.includes('score') || q.includes('grading')) {
+    return "Paul developed the **Handwritten Answer Evaluation System**, an automated grading pipeline using OCR, NLP, and LLM APIs. It assesses student responses using cosine semantic similarity rather than brittle keyword matching, providing rubric-aligned conceptual scoring and actionable feedback.";
+  }
+
+  if (q.includes('education') || q.includes('cgpa') || q.includes('college') || q.includes('university') || q.includes('degree')) {
+    return "Paul is pursuing his **B.E. in Computer Science and Engineering (Honours)** at **Anna University Regional Campus Madurai** (2022–2026) with an impressive **CGPA of 8.43 / 10**. He completed his higher secondary education at Velammal Vidyalaya with **88.4% (CBSE)**.";
+  }
+
+  if (q.includes('contact') || q.includes('hire') || q.includes('email') || q.includes('phone') || q.includes('reach') || q.includes('interview')) {
+    return "You can get in touch with Paul directly:\n• **Email:** pauljacksenb@gmail.com\n• **Phone:** +91 70105 31540\n• **LinkedIn:** linkedin.com/in/paul-jacksen\n• **GitHub:** github.com/Faactos\nHe is actively open to full-time AI/ML Engineering and intelligent systems developer roles!";
+  }
+
+  if (q.includes('leadership') || q.includes('club') || q.includes('iconics')) {
+    return "Paul served as **Secretary of the ICONICS Association**, where he led the planning and execution of campus technical symposiums, coordinated 4 student developer clubs, and fostered student open-source initiatives.";
+  }
+
+  return "Paul is an **AI/ML Engineer** specializing in Model Context Protocol (MCP), Amazon Bedrock, RAG pipelines, and full-stack systems engineering. Feel free to click one of the quick chips above or ask about his work at **Neeyamo**, **Enterprise RAG**, or **Smart Navigation**!";
+}
+
+function escapeHtml(str) {
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function formatMarkdown(str) {
+  return str
+    .replace(/\*\*(.*?)\*\*/g, '<strong class="text-white font-medium">$1</strong>')
+    .replace(/\*(.*?)\*/g, '<em class="text-neutral-200">$1</em>')
+    .replace(/`([^`]+)`/g, '<code class="px-1 py-0.5 rounded bg-black/60 border border-neutral-800 text-teal-300 font-mono text-[11px]">$1</code>')
+    .replace(/\n• /g, '<br>&bull; ')
+    .replace(/\n/g, '<br>');
 }
 
 // Modal Data
